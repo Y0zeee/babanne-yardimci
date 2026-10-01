@@ -1,0 +1,7 @@
+turn_on:
+  - fener<i|e?> (aç|yak)
+  - el fener(i|ini)? (aç|yak)
+
+turn_off:
+  - fener<i|e?> (kapat|söndür)
+  - el fener(i|ini)? (kapat|söndür)

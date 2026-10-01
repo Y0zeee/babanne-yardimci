@@ -1,0 +1,22 @@
+sure:
+  - (.ad.) (sure<si|yi|ye?>)? oku|çal|aç|dinlet
+  - (.ad.) suresi
+
+kuran:
+  - kuran<ı|a?> (oku|çal|aç|dinlet)
+
+turku:
+  - türkü<yü|ye?> (aç|çal|oynat|dinlet)
+
+radyo:
+  - radyo<yu|ya?> (aç|çal|dinlet)
+
+dur:
+  - dur
+  - (sesi|müziği|türküyü|kuranı)? (durdur|kapat|kes|sustur)
+
+ses_ac:
+  - ses<i|e?> (aç|yükselt|artır)
+
+ses_kis:
+  - ses<i|e?> (kıs|azalt|alçalt)
