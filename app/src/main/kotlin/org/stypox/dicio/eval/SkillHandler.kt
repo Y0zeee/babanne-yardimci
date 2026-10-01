@@ -32,6 +32,7 @@ import org.stypox.dicio.skills.open.OpenInfo
 import org.stypox.dicio.skills.search.SearchInfo
 import org.stypox.dicio.skills.tarih.TarihInfo
 import org.stypox.dicio.skills.telephone.TelephoneInfo
+import org.stypox.dicio.skills.acil.AcilInfo
 import org.stypox.dicio.skills.timer.TimerInfo
 import org.stypox.dicio.skills.translation.TranslationInfo
 import org.stypox.dicio.skills.weather.WeatherInfo
@@ -48,6 +49,7 @@ class SkillHandler @Inject constructor(
 ) {
     // TODO improve id handling (maybe just use an int that can point to an Android resource)
     val allSkillInfoList = listOf(
+        AcilInfo,
         WeatherInfo,
         SearchInfo,
         LyricsInfo,

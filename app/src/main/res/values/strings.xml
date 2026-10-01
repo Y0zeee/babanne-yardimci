@@ -156,6 +156,9 @@
     <string name="skill_sentence_example_namaz_vakti">When is the noon prayer?</string>
     <string name="skill_name_pil">Battery</string>
     <string name="skill_sentence_example_pil">How much battery is left?</string>
+    <string name="skill_name_acil">Emergency</string>
+    <string name="skill_sentence_example_acil">Help!</string>
+    <string name="perm_send_sms">kısa mesaj gönderin</string>
     <string name="skill_name_cevapsiz">Missed calls</string>
     <string name="skill_sentence_example_cevapsiz">Who called?</string>
     <string name="skill_name_sms_oku">Read messages</string>
