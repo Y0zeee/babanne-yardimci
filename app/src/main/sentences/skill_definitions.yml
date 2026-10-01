@@ -17,7 +17,7 @@ skills:
     specificity: high
     sentences:
       - id: gun
-      - id: tarih
+      - id: miladi
       - id: hicri
 
   - id: current_time

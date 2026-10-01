@@ -30,7 +30,7 @@ class TarihSkill(correspondingSkillInfo: SkillInfo, data: StandardRecognizerData
         val bugun = LocalDate.now()
         val metin = when (inputData) {
             is Tarih.Gun -> "Bugün ${gun(bugun)}."
-            is Tarih.Tarih -> "Bugün ${miladi(bugun)}."
+            is Tarih.Miladi -> "Bugün ${miladi(bugun)}."
             is Tarih.Hicri -> "Bugün hicri ${hicri(bugun)}."
         }
         return TarihOutput(metin)
