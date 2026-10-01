@@ -22,6 +22,7 @@ import org.stypox.dicio.settings.MainSettingsScreen
 import org.stypox.dicio.settings.SkillSettingsScreen
 import org.stypox.dicio.ui.about.AboutScreen
 import org.stypox.dicio.ui.home.HomeScreen
+import org.stypox.dicio.ui.kurulum.KurulumScreen
 
 @Composable
 fun Navigation() {
@@ -56,7 +57,12 @@ fun Navigation() {
             MainSettingsScreen(
                 navigationIcon = backIcon,
                 navigateToSkillSettings = { navController.navigate(SkillSettings) },
+                navigateToKurulum = { navController.navigate(Kurulum) },
             )
+        }
+
+        composable<Kurulum> {
+            KurulumScreen(navigationIcon = backIcon)
         }
 
         composable<SkillSettings> {

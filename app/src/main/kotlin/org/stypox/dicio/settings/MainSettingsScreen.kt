@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Extension
 import androidx.compose.material.icons.filled.UploadFile
@@ -49,6 +50,7 @@ import org.stypox.dicio.ui.theme.AppTheme
 fun MainSettingsScreen(
     navigationIcon: @Composable () -> Unit,
     navigateToSkillSettings: () -> Unit,
+    navigateToKurulum: () -> Unit,
     viewModel: MainSettingsViewModel = hiltViewModel(),
 ) {
     Scaffold(
@@ -62,6 +64,7 @@ fun MainSettingsScreen(
     ) {
         MainSettingsScreen(
             navigateToSkillSettings = navigateToSkillSettings,
+            navigateToKurulum = navigateToKurulum,
             viewModel = viewModel,
             modifier = Modifier.padding(it),
         )
@@ -71,6 +74,7 @@ fun MainSettingsScreen(
 @Composable
 private fun MainSettingsScreen(
     navigateToSkillSettings: () -> Unit,
+    navigateToKurulum: () -> Unit,
     viewModel: MainSettingsViewModel,
     modifier: Modifier = Modifier,
 ) {
@@ -201,6 +205,18 @@ private fun MainSettingsScreen(
             )
         }
 
+        /* FAMILY SETUP */
+        item {
+            SettingsItem(
+                title = stringResource(R.string.kurulum_baslik),
+                icon = Icons.Default.Build,
+                description = stringResource(R.string.kurulum_ozet),
+                modifier = Modifier
+                    .clickable(onClick = navigateToKurulum)
+                    .testTag("kurulum_item")
+            )
+        }
+
         item {
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -216,6 +232,7 @@ private fun MainSettingsScreenPreview() {
         ) {
             MainSettingsScreen(
                 navigateToSkillSettings = {},
+                navigateToKurulum = {},
                 viewModel = MainSettingsViewModel(
                     application = Application(),
                     wakeDeviceWrapper = null,
@@ -243,6 +260,7 @@ private fun MainSettingsScreenWithTopBarPreview() {
                     }
                 },
                 navigateToSkillSettings = {},
+                navigateToKurulum = {},
                 viewModel = MainSettingsViewModel(
                     application = Application(),
                     wakeDeviceWrapper = null,

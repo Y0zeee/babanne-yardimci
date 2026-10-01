@@ -13,3 +13,6 @@ object SkillSettings
 
 @Serializable
 object About
+
+@Serializable
+object Kurulum

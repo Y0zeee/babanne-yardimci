@@ -301,4 +301,35 @@
     <string name="about_privacy_title">Privacy policy</string>
     <string name="about_privacy_description">Dicio connects to external services only when a skill is expected to do so, or to download machine learning models during setup. All speech processing is performed locally on-device, and most skills can be used offline.</string>
     <string name="about_privacy_link" translatable="false">https://stypox.org/dicio-privacy-policy.html</string>
+    <string name="kurulum_baslik">Setup</string>
+    <string name="kurulum_ozet">For family: permissions, speech model, files</string>
+    <string name="kurulum_izinler">Permissions</string>
+    <string name="kurulum_izin_mikrofon">Microphone</string>
+    <string name="kurulum_izin_telefon">Phone / calls</string>
+    <string name="kurulum_izin_rehber">Contacts</string>
+    <string name="kurulum_izin_konum">Location</string>
+    <string name="kurulum_izin_sms">SMS</string>
+    <string name="kurulum_izin_arama_kaydi">Call log</string>
+    <string name="kurulum_izin_bildirim">Notifications</string>
+    <string name="kurulum_izin_ver">Grant</string>
+    <string name="kurulum_sistem">System</string>
+    <string name="kurulum_varsayilan_asistan">Default assistant</string>
+    <string name="kurulum_ayarlari_ac">Open settings</string>
+    <string name="kurulum_otomatik_baslat">Autostart setting</string>
+    <string name="kurulum_pil_kisitlama_yok">Battery: No restrictions</string>
+    <string name="kurulum_ses_modeli">Speech recognition model</string>
+    <string name="kurulum_modeli_indir">Download model</string>
+    <string name="kurulum_stt_yok">Speech recognition is off or unavailable</string>
+    <string name="kurulum_stt_inmedi">Turkish model not downloaded</string>
+    <string name="kurulum_stt_iniyor">Preparing model, please wait</string>
+    <string name="kurulum_stt_hata">Model failed, try again</string>
+    <string name="kurulum_stt_hazir">Turkish model ready</string>
+    <string name="kurulum_kisiler">People</string>
+    <string name="kurulum_kisi_yok">No people configured</string>
+    <string name="kurulum_acil_sira">(emergency order %1$d)</string>
+    <string name="kurulum_dosyalar">Files</string>
+    <string name="kurulum_dosya_sayisi">Quran: %1$d files, folk songs: %2$d files</string>
+    <string name="kurulum_dene">Try</string>
+    <string name="kurulum_dene_saat">Try: what time is it</string>
+    <string name="kurulum_saat_cumle">The time is %1$s</string>
 </resources>
