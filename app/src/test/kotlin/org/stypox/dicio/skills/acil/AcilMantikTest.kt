@@ -55,6 +55,15 @@ class AcilMantikTest : StringSpec({
         g.log.contains("ara:+90 555 000 00 02") shouldBe false
     }
 
+    "no 112 on an unconfigured phone (no emergency contacts)" {
+        val f = Sahte()
+        AcilMantik.planiYurut(emptyList(), true, "x", f)
+        f.log shouldBe emptyList()
+        val g = Sahte()
+        AcilMantik.planiYurut(listOf(kisi(1, null)), true, "x", g)
+        g.log.contains("ara:112") shouldBe false
+    }
+
     "cancel within 5 s cancels, otherwise proceed" {
         AcilMantik.geriSayim(iptalMs = 1000) shouldBe AcilMantik.SayimSonucu.IPTAL
         AcilMantik.geriSayim(iptalMs = 4999) shouldBe AcilMantik.SayimSonucu.IPTAL
