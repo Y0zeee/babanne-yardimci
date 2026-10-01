@@ -10,6 +10,8 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import org.dicio.skill.context.SkillContext
 import org.dicio.skill.skill.SkillInfo
 import org.dicio.skill.skill.SkillOutput
+import org.stypox.dicio.geri_bildirim.AnlamamaAdimi
+import org.stypox.dicio.geri_bildirim.AnlamamaSayaci
 import org.stypox.dicio.io.input.SttState
 import org.stypox.dicio.io.wake.WakeState
 import org.stypox.dicio.skills.calculator.CalculatorInfo
@@ -53,7 +55,7 @@ class SkillInfoPreviews : CollectionPreviewParameterProvider<SkillInfo>(listOf(
 ))
 
 class SkillOutputPreviews : CollectionPreviewParameterProvider<SkillOutput>(listOf(
-    TextFallbackOutput(askToRepeat = true),
+    TextFallbackOutput(AnlamamaSayaci().basarisiz(), AnlamamaAdimi.TekrarIste, null),
 ))
 
 class InteractionLogPreviews : CollectionPreviewParameterProvider<InteractionLog>(listOf(
@@ -90,7 +92,11 @@ class InteractionLogPreviews : CollectionPreviewParameterProvider<InteractionLog
                 questionsAnswers = listOf(
                     QuestionAnswer(
                         "Set a timer",
-                        TimerOutput.SetAskDuration { TextFallbackOutput(askToRepeat = true) }
+                        TimerOutput.SetAskDuration {
+                            TextFallbackOutput(
+                                AnlamamaSayaci().basarisiz(), AnlamamaAdimi.TekrarIste, null
+                            )
+                        }
                     )
                 )
             )
