@@ -18,5 +18,7 @@
     { "ad": "tansiyon ilacı", "saat": "08:00" }
   ],
   "ezan_sesi": true,
-  "tts_hizi": 0.8
+  "tts_hizi": 0.8,
+  "acil_112": true,
+  "sahip_adi": "Babaanne"
 }

@@ -28,6 +28,16 @@ skills:
     sentences:
       - id: oku
 
+  - id: acil
+    specificity: high
+    sentences:
+      - id: imdat
+
+  - id: acil_iptal
+    specificity: high
+    sentences:
+      - id: iptal
+
   - id: tarih
     specificity: high
     sentences:

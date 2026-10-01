@@ -31,6 +31,8 @@ data class YardimciConfig(
     val ilaclar: List<Ilac> = emptyList(),
     val ezanSesi: Boolean = false,
     val ttsHizi: Float = DEFAULT_TTS_HIZI,
+    val acil112: Boolean = true,
+    val sahipAdi: String = DEFAULT_SAHIP_ADI,
 ) {
     /** Finds the configured person whose nickname matches [spoken] (suffixes are ignored). */
     fun kisiBul(spoken: String): Kisi? {
@@ -49,6 +51,7 @@ data class YardimciConfig(
     companion object {
         private const val NUMARA_HANE = 10
         const val DEFAULT_TTS_HIZI = 0.8f
+        const val DEFAULT_SAHIP_ADI = "Babaanne"
         const val FILE_NAME = "yardımcı.json"
 
         fun parse(text: String?): YardimciConfig {
@@ -62,6 +65,9 @@ data class YardimciConfig(
                     ezanSesi = (root["ezan_sesi"] as? JsonPrimitive)?.booleanOrNull ?: false,
                     ttsHizi = (root["tts_hizi"] as? JsonPrimitive)?.floatOrNull
                         ?.takeIf { it > 0f } ?: DEFAULT_TTS_HIZI,
+                    acil112 = (root["acil_112"] as? JsonPrimitive)?.booleanOrNull ?: true,
+                    sahipAdi = (root["sahip_adi"] as? JsonPrimitive)?.contentOrNull
+                        ?.takeIf { it.isNotBlank() } ?: DEFAULT_SAHIP_ADI,
                 )
             } catch (e: Exception) {
                 YardimciConfig()
