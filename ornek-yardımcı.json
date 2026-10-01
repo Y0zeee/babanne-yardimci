@@ -13,7 +13,7 @@
       "otomatik_ac": false
     }
   ],
-  "konum_yedek": "+90 555 000 00 01",
+  "konum_yedek": { "enlem": 39.92, "boylam": 32.85, "ilce": "Ankara" },
   "ilaclar": [
     { "ad": "tansiyon ilacı", "saat": "08:00" }
   ],

@@ -1,4 +1,25 @@
 skills:
+  - id: namaz_vakti
+    specificity: high
+    sentences:
+      - id: vakit
+        captures:
+          - id: ad
+            type: string
+      - id: kalan
+        captures:
+          - id: ad
+            type: string
+      - id: siradaki
+      - id: hepsi
+
+  - id: tarih
+    specificity: high
+    sentences:
+      - id: gun
+      - id: miladi
+      - id: hicri
+
   - id: current_time
     specificity: high
     sentences:
