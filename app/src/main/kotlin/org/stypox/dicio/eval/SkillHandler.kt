@@ -26,6 +26,7 @@ import org.stypox.dicio.skills.navigation.NavigationInfo
 import org.stypox.dicio.skills.namaz_vakti.NamazVaktiInfo
 import org.stypox.dicio.skills.notify.NotifyInfo
 import org.stypox.dicio.skills.pil.PilInfo
+import org.stypox.dicio.skills.yerel_medya.YerelMedyaInfo
 import org.stypox.dicio.skills.cevapsiz.CevapsizInfo
 import org.stypox.dicio.skills.sms_oku.SmsOkuInfo
 import org.stypox.dicio.skills.open.OpenInfo
@@ -64,6 +65,7 @@ class SkillHandler @Inject constructor(
         PilInfo,
         CevapsizInfo,
         SmsOkuInfo,
+        YerelMedyaInfo,
         MediaInfo,
         JokeInfo,
         ListeningInfo(dataStore),

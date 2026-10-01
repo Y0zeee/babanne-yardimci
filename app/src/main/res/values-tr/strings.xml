@@ -125,6 +125,8 @@
     <string name="error_sorry">Üzgünüz, bir hata oluştu</string>
     <string name="skill_name_namaz_vakti">Namaz vakitleri</string>
     <string name="skill_sentence_example_namaz_vakti">Öğle ne zaman\?</string>
+    <string name="skill_name_yerel_medya">Kur\'an ve türkü</string>
+    <string name="skill_sentence_example_yerel_medya">Yasin oku</string>
     <string name="skill_name_pil">Pil</string>
     <string name="skill_sentence_example_pil">Şarjım ne kadar\?</string>
     <string name="skill_name_acil">Acil durum</string>

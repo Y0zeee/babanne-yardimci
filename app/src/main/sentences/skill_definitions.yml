@@ -45,6 +45,20 @@ skills:
       - id: miladi
       - id: hicri
 
+  - id: yerel_medya
+    specificity: high
+    sentences:
+      - id: sure
+        captures:
+          - id: ad
+            type: string
+      - id: kuran
+      - id: turku
+      - id: radyo
+      - id: dur
+      - id: ses_ac
+      - id: ses_kis
+
   - id: current_time
     specificity: high
     sentences:
