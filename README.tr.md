@@ -10,8 +10,10 @@ arama kaydı, bildirim). Kırmızı olanların yanındaki **İzin ver** düğmes
 hepsi yeşil olmalıdır.
 
 ## 2. Güç düğmesi kısayolu
-Ayarlar → Ek ayarlar → Düğme kısayolları → Güç düğmesine iki kez bas → asistanı seçin.
-Böylece babaanne güç düğmesine basarak asistanı çağırır.
+Ayarlar → Ek ayarlar → Düğme kısayolları → **"Google Asistanı başlat"** → **"Güç düğmesini 0,5 sn basılı tut"**.
+Varsayılan asistan bu uygulama olduğu için (3. adım) kısayol bunu açar: babaanne güç düğmesini
+basılı tutar → kısa titreşim + "Buyur" → konuşur. (Kısayol MIUI'de yalnız tam ekran hareket
+navigasyonunda görünür; görünmezse Ayarlar → Ek ayarlar → Tam ekran → "Hareketler".)
 
 ## 3. Varsayılan asistan
 Kurulum ekranında **Varsayılan asistan** satırındaki **Ayarları aç** düğmesine basın,
@@ -33,7 +35,7 @@ Ayarlar → Ek ayarlar → Erişilebilirlik → Metinden konuşmaya → Tercih e
 
 ## 7. yardımcı.json
 Dosya adı: `yardımcı.json`. Yeri: uygulamanın harici dosya klasörü
-(`/sdcard/Android/data/<uygulama paketi>/files/yardımcı.json`).
+(`/sdcard/Android/data/org.stypox.dicio.main/files/yardımcı.json`).
 Örnek (yalnız örnek numaralardır, gerçek numara yazın ama bu depoya asla koymayın):
 
 ```json
