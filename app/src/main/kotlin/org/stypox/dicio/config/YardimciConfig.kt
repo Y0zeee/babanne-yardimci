@@ -8,6 +8,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.floatOrNull
 import kotlinx.serialization.json.intOrNull
 import java.io.File
@@ -21,9 +22,12 @@ data class Kisi(
 
 data class Ilac(val ad: String, val saat: String)
 
+/** Fallback location (used when there is no GPS fix), e.g. the grandmother's district centre. */
+data class KonumYedek(val enlem: Double, val boylam: Double, val ilce: String?)
+
 data class YardimciConfig(
     val kisiler: List<Kisi> = emptyList(),
-    val konumYedek: String? = null,
+    val konumYedek: KonumYedek? = null,
     val ilaclar: List<Ilac> = emptyList(),
     val ezanSesi: Boolean = false,
     val ttsHizi: Float = DEFAULT_TTS_HIZI,
@@ -45,7 +49,7 @@ data class YardimciConfig(
                 val root = Json.parseToJsonElement(text) as? JsonObject ?: return YardimciConfig()
                 YardimciConfig(
                     kisiler = (root["kisiler"] as? JsonArray).orEmpty().mapNotNull(::parseKisi),
-                    konumYedek = (root["konum_yedek"] as? JsonPrimitive)?.contentOrNull,
+                    konumYedek = parseKonumYedek(root["konum_yedek"]),
                     ilaclar = (root["ilaclar"] as? JsonArray).orEmpty().mapNotNull(::parseIlac),
                     ezanSesi = (root["ezan_sesi"] as? JsonPrimitive)?.booleanOrNull ?: false,
                     ttsHizi = (root["tts_hizi"] as? JsonPrimitive)?.floatOrNull
@@ -68,6 +72,13 @@ data class YardimciConfig(
                 acilSira = (o["acil_sira"] as? JsonPrimitive)?.intOrNull,
                 otomatikAc = (o["otomatik_ac"] as? JsonPrimitive)?.booleanOrNull ?: false,
             )
+        }
+
+        private fun parseKonumYedek(e: JsonElement?): KonumYedek? {
+            val o = e as? JsonObject ?: return null
+            val enlem = (o["enlem"] as? JsonPrimitive)?.doubleOrNull ?: return null
+            val boylam = (o["boylam"] as? JsonPrimitive)?.doubleOrNull ?: return null
+            return KonumYedek(enlem, boylam, (o["ilce"] as? JsonPrimitive)?.contentOrNull)
         }
 
         private fun parseIlac(e: JsonElement): Ilac? {

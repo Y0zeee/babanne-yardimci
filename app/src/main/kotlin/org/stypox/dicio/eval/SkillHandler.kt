@@ -23,9 +23,11 @@ import org.stypox.dicio.skills.listening.ListeningInfo
 import org.stypox.dicio.skills.lyrics.LyricsInfo
 import org.stypox.dicio.skills.media.MediaInfo
 import org.stypox.dicio.skills.navigation.NavigationInfo
+import org.stypox.dicio.skills.namaz_vakti.NamazVaktiInfo
 import org.stypox.dicio.skills.notify.NotifyInfo
 import org.stypox.dicio.skills.open.OpenInfo
 import org.stypox.dicio.skills.search.SearchInfo
+import org.stypox.dicio.skills.tarih.TarihInfo
 import org.stypox.dicio.skills.telephone.TelephoneInfo
 import org.stypox.dicio.skills.timer.TimerInfo
 import org.stypox.dicio.skills.translation.TranslationInfo
@@ -52,6 +54,8 @@ class SkillHandler @Inject constructor(
         TelephoneInfo,
         TimerInfo,
         CurrentTimeInfo,
+        TarihInfo,
+        NamazVaktiInfo,
         MediaInfo,
         JokeInfo,
         ListeningInfo(dataStore),

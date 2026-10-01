@@ -1,0 +1,12 @@
+vakit:
+  - (.ad.) (ezanı|namazı|vakti)? (ne zaman|kaçta)
+
+kalan:
+  - (.ad.) ne kadar (var|kaldı)
+
+siradaki:
+  - (sıradaki|(bir sonraki)|(şimdiki)) (vakit|namaz|ezan) (ne|hangisi)
+
+hepsi:
+  - (bugünkü|bugünün|tüm) (namaz|ezan) vakitleri
+  - namaz vakitleri

@@ -123,6 +123,11 @@
     <string name="error_report_channel_description">Hataları bildirmek için bildirimler</string>
     <string name="error_report">Bildir</string>
     <string name="error_sorry">Üzgünüz, bir hata oluştu</string>
+    <string name="skill_name_namaz_vakti">Namaz vakitleri</string>
+    <string name="skill_sentence_example_namaz_vakti">Öğle ne zaman\?</string>
+    <string name="skill_name_tarih">Tarih</string>
+    <string name="skill_sentence_example_tarih">Bugün günlerden ne\?</string>
+    <string name="perm_location">son bilinen konumu okuyun</string>
     <string name="skill_name_current_time">Geçerli saat</string>
     <string name="skill_sentence_example_current_time">Saat kaç\?</string>
     <string name="skill_time_current_time">Şu anda %1$s</string>

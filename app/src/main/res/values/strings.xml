@@ -152,6 +152,11 @@
     <string name="skill_sentence_example_telephone">Call Tom</string>
     <string name="skill_name_timer">Timer</string>
     <string name="skill_sentence_example_timer">Set a timer for five minutes</string>
+    <string name="skill_name_namaz_vakti">Prayer times</string>
+    <string name="skill_sentence_example_namaz_vakti">When is the noon prayer?</string>
+    <string name="skill_name_tarih">Date</string>
+    <string name="skill_sentence_example_tarih">What day is it today?</string>
+    <string name="perm_location">read the last known location</string>
     <string name="skill_name_current_time">Current time</string>
     <string name="skill_sentence_example_current_time">What time is it?</string>
     <string name="skill_fallback_name_text">Text message</string>
