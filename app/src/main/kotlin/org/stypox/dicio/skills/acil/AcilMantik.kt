@@ -61,10 +61,13 @@ object AcilMantik {
      * when nobody did and [acil112] is true. A failed SMS is retried exactly once.
      */
     fun planiYurut(kisiler: List<Kisi>, acil112: Boolean, sms: String, eylemci: AcilEylemci) {
-        for (kisi in acilKisiler(kisiler)) {
+        val sira = acilKisiler(kisiler)
+        for (kisi in sira) {
             if (!eylemci.smsGonder(kisi.numara, sms)) eylemci.smsGonder(kisi.numara, sms)
             if (eylemci.ara(kisi.numara)) return
         }
-        if (acil112) eylemci.ara(NUMARA_112)
+        // 112 yalnız aile acil kişileri ayarladıysa: kurulmamış telefonda (yardımcı.json yok/boş)
+        // deneme amaçlı "imdat" demek gerçek bir 112 araması yapmasın.
+        if (acil112 && sira.isNotEmpty()) eylemci.ara(NUMARA_112)
     }
 }
