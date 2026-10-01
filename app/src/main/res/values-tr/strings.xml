@@ -84,7 +84,7 @@
     <string name="skill_name_telephone">Telefon</string>
     <string name="skill_sentence_example_telephone">Tom\'u ara</string>
     <string name="skill_telephone_unknown_contact">Kişi bulunamadı, tekrar deneyin</string>
-    <string name="skill_telephone_confirm_call">%1$s kişisini arayayım mı\?</string>
+    <string name="skill_telephone_confirm_call">%1$s\'ı arıyorum, olur mu\?</string>
     <string name="skill_telephone_calling">%1$s aranıyor…</string>
     <string name="skill_telephone_not_calling">Tamam, kimseyi aramıyorum</string>
     <string name="pref_skill_number_library_not_available">Sayı ayrıştırma ve biçimlendirme kütüphanesi <i>dicio-numbers</i> henüz sizin dilinize çevrilmedi; bundan dolayı sayılar, süreler ve tarihlerle ilgili tüm beceriler kullanılabilir değildir. <b>Lütfen buraya dokunarak katkıda bulunun</b>!</string>

@@ -9,6 +9,7 @@ import java.io.OutputStream
 object UserSettingsSerializer : Serializer<UserSettings> {
     override val defaultValue: UserSettings = UserSettings.getDefaultInstance()
         .toBuilder()
+        .setLanguage(Language.LANGUAGE_TR)
         .setAutoFinishSttPopup(true)
         .build()
 
