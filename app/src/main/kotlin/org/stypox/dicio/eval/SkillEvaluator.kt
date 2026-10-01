@@ -15,6 +15,8 @@ import org.dicio.skill.skill.InteractionPlan
 import org.dicio.skill.skill.Permission
 import org.dicio.skill.skill.SkillOutput
 import org.stypox.dicio.di.SkillContextInternal
+import org.stypox.dicio.geri_bildirim.GeriBildirim
+import org.stypox.dicio.geri_bildirim.Titresim
 import org.stypox.dicio.di.SttInputDeviceWrapper
 import org.stypox.dicio.io.graphical.ErrorSkillOutput
 import org.stypox.dicio.io.graphical.MissingPermissionsSkillOutput
@@ -96,6 +98,7 @@ class SkillEvaluatorImpl(
     }
 
     private suspend fun evaluateMatchingSkill(utterances: List<String>) {
+        var fallbackChosen = false
         val (chosenInput, chosenSkill) = try {
             utterances.firstNotNullOfOrNull { input: String ->
                 skillContext.standardMatchHelper = MatchHelper(skillContext.parserFormatter, input)
@@ -103,6 +106,7 @@ class SkillEvaluatorImpl(
                     Pair(input, skillWithResult)
                 }
             } ?: Pair(utterances[0], skillRanker.getFallbackSkill(skillContext, utterances[0]))
+                .also { fallbackChosen = true }
         } catch (throwable: Throwable) {
             addErrorInteractionFromPending(throwable)
             return
@@ -112,6 +116,10 @@ class SkillEvaluatorImpl(
             // significant since the purpose of MatchHelper is to cache information about the input)
             skillContext.standardMatchHelper = null
         }
+        Titresim.yap(
+            skillContext.android,
+            if (fallbackChosen) GeriBildirim.NOT_UNDERSTOOD else GeriBildirim.UNDERSTOOD
+        )
         val skillInfo = chosenSkill.skill.correspondingSkillInfo
 
         _state.value = _state.value.copy(

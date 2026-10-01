@@ -225,7 +225,10 @@
     <string name="pref_wake_custom_delete">Özel uyandırma sözcüğünü sil</string>
     <string name="pref_wake_custom_delete_summary">Varsayılan \"Hey Dicio\" uyandırma sözcüğüne geri dön</string>
     <string name="pref_wake_custom_import">Özel uyandırma sözcüğünü içe aktar</string>
-    <string name="eval_no_match_repeat">Tekrar edebilir misin?</string>
+    <string name="eval_no_match_repeat">Anlamadım, bir daha söyler misin?</string>
+    <string name="eval_no_match_call_or_time">Arama mı yapayım, vakit mi söyleyeyim?</string>
+    <string name="eval_no_match_call_person">%1$s\'ı arayayım mı?</string>
+    <string name="stt_listening_prompt">Buyur</string>
     <string name="skill_search_no_results_stop">Arama hiçbir sonuç vermedi</string>
     <string name="wake_custom_service_foreground_notification">Özel uyandırma sözcüğü dinleniyor</string>
     <string name="pref_weather_temperature_unit">Sıcaklık birimi</string>
