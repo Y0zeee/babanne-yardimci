@@ -127,6 +127,9 @@
     <string name="eval_network_error_description">Dicio could not reach the internet. Please check your connection and retry.</string>
     <string name="eval_no_match">I did not understand</string>
     <string name="eval_no_match_repeat">Could you repeat?</string>
+    <string name="eval_no_match_call_or_time">Should I make a call or tell the time?</string>
+    <string name="eval_no_match_call_person">Should I call %1$s?</string>
+    <string name="stt_listening_prompt">Go ahead</string>
     <string name="stt_say_something">Say something…</string>
     <string name="stt_did_not_understand">I could not understand, try again</string>
     <string name="stt_popup">Speech to text popup</string>

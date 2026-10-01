@@ -21,9 +21,10 @@ class ConfirmCallOutput(
     private val name: String,
     private val number: String,
     private val yesNoData: StandardRecognizerData<Sentences.UtilYesNo>,
+    private val promptRes: Int = R.string.skill_telephone_confirm_call,
 ) : SkillOutput {
     override fun getSpeechOutput(ctx: SkillContext): String =
-        ctx.getString(R.string.skill_telephone_confirm_call, name)
+        ctx.getString(promptRes, name)
 
     override fun getInteractionPlan(ctx: SkillContext): InteractionPlan {
         val confirmYesNoSkill = object : RecognizeYesNoSkill(TelephoneInfo, yesNoData) {

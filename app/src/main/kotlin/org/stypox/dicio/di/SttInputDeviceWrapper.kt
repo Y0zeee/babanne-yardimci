@@ -19,6 +19,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import org.stypox.dicio.R
+import org.stypox.dicio.geri_bildirim.GeriBildirim
+import org.stypox.dicio.geri_bildirim.Titresim
 import org.stypox.dicio.io.input.InputEvent
 import org.stypox.dicio.io.input.SttInputDevice
 import org.stypox.dicio.io.input.SttState
@@ -54,6 +56,7 @@ class SttInputDeviceWrapperImpl(
     private val localeManager: LocaleManager,
     private val okHttpClient: OkHttpClient,
     private val activityForResultManager: ActivityForResultManager,
+    private val speechOutputDevice: SpeechOutputDeviceWrapper,
 ) : SttInputDeviceWrapper {
     private val scope = CoroutineScope(Dispatchers.Default)
 
@@ -158,10 +161,26 @@ class SttInputDeviceWrapperImpl(
         eventListener(it)
     }
 
+    /**
+     * Vibrates once and says "Buyur", opening the microphone only after the speech is over so
+     * that the assistant does not hear itself.
+     */
+    private fun buyurThenListen(startListening: () -> Unit) {
+        Titresim.yap(appContext, GeriBildirim.LISTENING)
+        scope.launch(Dispatchers.Main) {
+            speechOutputDevice.speak(appContext.getString(R.string.stt_listening_prompt))
+            speechOutputDevice.runWhenFinishedSpeaking { startListening() }
+        }
+    }
+
     override fun tryLoad(thenStartListeningEventListener: ((InputEvent) -> Unit)?): Boolean {
-        return sttInputDevice?.tryLoad(if (thenStartListeningEventListener != null) {
-            wrapEventListener(thenStartListeningEventListener)
-        } else { null }) ?: false
+        val device = sttInputDevice ?: return false
+        if (thenStartListeningEventListener == null) {
+            return device.tryLoad(null)
+        }
+        val wrapped = wrapEventListener(thenStartListeningEventListener)
+        buyurThenListen { device.tryLoad(wrapped) }
+        return true
     }
 
     override fun stopListening() {
@@ -169,7 +188,13 @@ class SttInputDeviceWrapperImpl(
     }
 
     override fun onClick(eventListener: (InputEvent) -> Unit) {
-        sttInputDevice?.onClick(wrapEventListener(eventListener))
+        val device = sttInputDevice ?: return
+        val wrapped = wrapEventListener(eventListener)
+        if (_uiState.value == SttState.Listening) {
+            device.onClick(wrapped) // stops listening, no need to say anything
+        } else {
+            buyurThenListen { device.onClick(wrapped) }
+        }
     }
 
     override fun reinitializeToReleaseResources() {
@@ -188,9 +213,11 @@ class SttInputDeviceWrapperModule {
         localeManager: LocaleManager,
         okHttpClient: OkHttpClient,
         activityForResultManager: ActivityForResultManager,
+        speechOutputDevice: SpeechOutputDeviceWrapper,
     ): SttInputDeviceWrapper {
         return SttInputDeviceWrapperImpl(
-            appContext, dataStore, localeManager, okHttpClient, activityForResultManager
+            appContext, dataStore, localeManager, okHttpClient, activityForResultManager,
+            speechOutputDevice,
         )
     }
 }
