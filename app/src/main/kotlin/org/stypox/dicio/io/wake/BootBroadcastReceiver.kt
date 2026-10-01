@@ -10,6 +10,7 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import org.stypox.dicio.di.WakeDeviceWrapper
+import org.stypox.dicio.io.servis.YardimciServisi
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -18,6 +19,9 @@ class BootBroadcastReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         Log.d(TAG, "Got intent ${intent.action}")
+
+        // battery warning and prayer alarms do not depend on the microphone/wake word
+        YardimciServisi.baslat(context)
 
         if (ContextCompat.checkSelfPermission(context, RECORD_AUDIO) !=
             PackageManager.PERMISSION_GRANTED) {

@@ -26,6 +26,7 @@ import kotlinx.coroutines.launch
 import org.stypox.dicio.di.SttInputDeviceWrapper
 import org.stypox.dicio.di.WakeDeviceWrapper
 import org.stypox.dicio.eval.SkillEvaluator
+import org.stypox.dicio.io.servis.YardimciServisi
 import org.stypox.dicio.io.wake.WakeService
 import org.stypox.dicio.io.wake.WakeState.Loaded
 import org.stypox.dicio.io.wake.WakeState.Loading
@@ -119,6 +120,7 @@ class MainActivity : BaseActivity() {
             sttInputDevice.tryLoad(null)
         }
 
+        YardimciServisi.baslat(this)
         WakeService.start(this)
         wakeServiceJob?.cancel()
         wakeServiceJob = lifecycleScope.launch {
