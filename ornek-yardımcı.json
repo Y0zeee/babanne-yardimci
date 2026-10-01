@@ -1,0 +1,22 @@
+{
+  "kisiler": [
+    {
+      "adlar": ["oğlum", "bizim oğlan"],
+      "numara": "+90 555 000 00 01",
+      "acil_sira": 1,
+      "otomatik_ac": true
+    },
+    {
+      "adlar": ["kızım"],
+      "numara": "+90 555 000 00 02",
+      "acil_sira": 2,
+      "otomatik_ac": false
+    }
+  ],
+  "konum_yedek": "+90 555 000 00 01",
+  "ilaclar": [
+    { "ad": "tansiyon ilacı", "saat": "08:00" }
+  ],
+  "ezan_sesi": true,
+  "tts_hizi": 0.8
+}

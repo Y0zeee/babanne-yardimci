@@ -217,5 +217,10 @@ configurations.configureEach {
 }
 
 fun gitBranch(): String {
-    return Git.open(rootDir).use { it.repository.branch }
+    return try {
+        Git.open(rootDir).use { it.repository.branch }
+    } catch (e: java.io.IOException) {
+        // e.g. git worktrees, which older JGit versions cannot open
+        "unknown"
+    }
 }

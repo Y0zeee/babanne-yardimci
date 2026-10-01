@@ -1,5 +1,5 @@
 yes:
-  - evet|(tabii ki?)|kesinlikle|(hemen)|olumlu|onaylıyorum|devam et?
+  - evet|he|(hı hı)|olur|tamam|ara|(tabii ki?)|kesinlikle|(hemen)|olumlu|onaylıyorum|devam et?
 
 no:
-  - hayır|kesinlikle (hayır|olmaz)|olumsuz|reddediyorum|iptal
+  - hayır|yok|istemem|dur|kesinlikle (hayır|olmaz)|olumsuz|reddediyorum|iptal

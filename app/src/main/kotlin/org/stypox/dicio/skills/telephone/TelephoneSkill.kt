@@ -8,6 +8,7 @@ import org.dicio.skill.skill.SkillInfo
 import org.dicio.skill.skill.SkillOutput
 import org.dicio.skill.standard.StandardRecognizerData
 import org.dicio.skill.standard.StandardRecognizerSkill
+import org.stypox.dicio.config.YardimciConfig
 import org.stypox.dicio.sentences.Sentences
 import org.stypox.dicio.sentences.Sentences.Telephone
 
@@ -21,6 +22,9 @@ class TelephoneSkill(
         val contentResolver = ctx.android.contentResolver
         val userContactName = when (inputData) {
             is Telephone.Dial -> inputData.who?.trim { it <= ' ' } ?: ""
+        }
+        YardimciConfig.load(ctx.android).kisiBul(userContactName)?.let {
+            return ConfirmCallOutput(it.adlar.first(), it.numara, yesNoData)
         }
         val contacts = Contact.getFilteredSortedContacts(contentResolver, userContactName)
         val validContacts = ArrayList<Pair<String, List<String>>>()

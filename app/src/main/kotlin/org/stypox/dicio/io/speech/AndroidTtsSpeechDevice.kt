@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import org.dicio.skill.context.SpeechOutputDevice
 import org.stypox.dicio.R
+import org.stypox.dicio.config.YardimciConfig
 import java.util.Locale
 
 class AndroidTtsSpeechDevice(private var context: Context, locale: Locale) : SpeechOutputDevice {
@@ -23,6 +24,7 @@ class AndroidTtsSpeechDevice(private var context: Context, locale: Locale) : Spe
                     val errorCode = setLanguage(locale)
                     if (errorCode >= 0) { // errors are -1 or -2
                         initializedCorrectly = true
+                        setSpeechRate(YardimciConfig.load(context).ttsHizi)
                         setOnUtteranceProgressListener(object :
                             UtteranceProgressListener() {
                             override fun onStart(utteranceId: String) {}
