@@ -25,6 +25,9 @@ import org.stypox.dicio.skills.media.MediaInfo
 import org.stypox.dicio.skills.navigation.NavigationInfo
 import org.stypox.dicio.skills.namaz_vakti.NamazVaktiInfo
 import org.stypox.dicio.skills.notify.NotifyInfo
+import org.stypox.dicio.skills.pil.PilInfo
+import org.stypox.dicio.skills.cevapsiz.CevapsizInfo
+import org.stypox.dicio.skills.sms_oku.SmsOkuInfo
 import org.stypox.dicio.skills.open.OpenInfo
 import org.stypox.dicio.skills.search.SearchInfo
 import org.stypox.dicio.skills.tarih.TarihInfo
@@ -56,6 +59,9 @@ class SkillHandler @Inject constructor(
         CurrentTimeInfo,
         TarihInfo,
         NamazVaktiInfo,
+        PilInfo,
+        CevapsizInfo,
+        SmsOkuInfo,
         MediaInfo,
         JokeInfo,
         ListeningInfo(dataStore),

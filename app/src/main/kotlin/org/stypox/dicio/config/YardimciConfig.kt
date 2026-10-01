@@ -39,7 +39,15 @@ data class YardimciConfig(
         return kisiler.firstOrNull { k -> k.adlar.any { TakmaAd.normalize(it) == wanted } }
     }
 
+    /** Finds the configured person owning [number], comparing the last 10 digits. */
+    fun numarayaGoreKisi(number: String): Kisi? {
+        val wanted = number.filter { it.isDigit() }.takeLast(NUMARA_HANE)
+        if (wanted.isEmpty()) return null
+        return kisiler.firstOrNull { it.numara.filter { c -> c.isDigit() }.takeLast(NUMARA_HANE) == wanted }
+    }
+
     companion object {
+        private const val NUMARA_HANE = 10
         const val DEFAULT_TTS_HIZI = 0.8f
         const val FILE_NAME = "yardımcı.json"
 
