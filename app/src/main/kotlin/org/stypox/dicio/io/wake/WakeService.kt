@@ -9,6 +9,8 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.BroadcastReceiver
+import android.content.IntentFilter
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.media.AudioFormat
 import android.media.AudioRecord
@@ -35,6 +37,10 @@ import org.stypox.dicio.R
 import org.stypox.dicio.di.SttInputDeviceWrapper
 import org.stypox.dicio.di.WakeDeviceWrapper
 import org.stypox.dicio.eval.SkillEvaluator
+import org.stypox.dicio.skills.pil.PilKonusma
+import org.stypox.dicio.skills.pil.PilOlaylari
+import org.stypox.dicio.skills.pil.pilSarjda
+import org.stypox.dicio.skills.pil.pilYuzdesi
 import java.time.Instant
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicReference
@@ -66,6 +72,23 @@ class WakeService : Service() {
 
     private lateinit var notificationManager: NotificationManager
 
+    // Runtime receiver: manifest receivers cannot get BATTERY_CHANGED/POWER_CONNECTED on Android 8+
+    private val pilOlaylari = PilOlaylari()
+    private var pilKonusma: PilKonusma? = null
+    private val pilReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val metin = when (intent.action) {
+                Intent.ACTION_POWER_CONNECTED -> pilOlaylari.sarjaTakildi()
+                Intent.ACTION_BATTERY_CHANGED -> {
+                    val yuzde = pilYuzdesi(intent) ?: return
+                    pilOlaylari.seviyeDegisti(yuzde, pilSarjda(intent))
+                }
+                else -> null
+            }
+            if (metin != null) pilKonusma?.soyle(metin)
+        }
+    }
+
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
@@ -73,6 +96,13 @@ class WakeService : Service() {
     override fun onCreate() {
         super.onCreate()
         notificationManager = getSystemService(this, NotificationManager::class.java)!!
+
+        pilKonusma = PilKonusma(this)
+        val ilk = registerReceiver(pilReceiver, IntentFilter().apply {
+            addAction(Intent.ACTION_BATTERY_CHANGED)
+            addAction(Intent.ACTION_POWER_CONNECTED)
+        })
+        pilYuzdesi(ilk)?.let { pilOlaylari.baslat(it, pilSarjda(ilk)) }
 
         scope.launch {
             // Recreate the notification so that it says the correct thing (i.e. there is a
@@ -131,6 +161,11 @@ class WakeService : Service() {
     override fun onDestroy() {
         listening.set(false)
         job.cancel()
+        try {
+            unregisterReceiver(pilReceiver)
+        } catch (_: IllegalArgumentException) {
+        }
+        pilKonusma?.kapat()
         wakeDevice.reinitializeToReleaseResources()
         super.onDestroy()
     }

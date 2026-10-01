@@ -154,6 +154,14 @@
     <string name="skill_sentence_example_timer">Set a timer for five minutes</string>
     <string name="skill_name_namaz_vakti">Prayer times</string>
     <string name="skill_sentence_example_namaz_vakti">When is the noon prayer?</string>
+    <string name="skill_name_pil">Battery</string>
+    <string name="skill_sentence_example_pil">How much battery is left?</string>
+    <string name="skill_name_cevapsiz">Missed calls</string>
+    <string name="skill_sentence_example_cevapsiz">Who called?</string>
+    <string name="skill_name_sms_oku">Read messages</string>
+    <string name="skill_sentence_example_sms_oku">Read my messages</string>
+    <string name="perm_read_call_log">read your call log</string>
+    <string name="perm_read_sms">read your text messages</string>
     <string name="skill_name_tarih">Date</string>
     <string name="skill_sentence_example_tarih">What day is it today?</string>
     <string name="perm_location">read the last known location</string>

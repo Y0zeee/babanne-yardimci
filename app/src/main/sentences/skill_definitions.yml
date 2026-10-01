@@ -13,6 +13,21 @@ skills:
       - id: siradaki
       - id: hepsi
 
+  - id: pil
+    specificity: high
+    sentences:
+      - id: sarj
+
+  - id: cevapsiz
+    specificity: high
+    sentences:
+      - id: kim
+
+  - id: sms_oku
+    specificity: high
+    sentences:
+      - id: oku
+
   - id: tarih
     specificity: high
     sentences:

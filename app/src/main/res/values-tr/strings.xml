@@ -125,6 +125,14 @@
     <string name="error_sorry">Üzgünüz, bir hata oluştu</string>
     <string name="skill_name_namaz_vakti">Namaz vakitleri</string>
     <string name="skill_sentence_example_namaz_vakti">Öğle ne zaman\?</string>
+    <string name="skill_name_pil">Pil</string>
+    <string name="skill_sentence_example_pil">Şarjım ne kadar\?</string>
+    <string name="skill_name_cevapsiz">Cevapsız aramalar</string>
+    <string name="skill_sentence_example_cevapsiz">Kim aradı\?</string>
+    <string name="skill_name_sms_oku">Mesajları oku</string>
+    <string name="skill_sentence_example_sms_oku">Mesajları oku</string>
+    <string name="perm_read_call_log">arama geçmişinizi okuyun</string>
+    <string name="perm_read_sms">kısa mesajlarınızı okuyun</string>
     <string name="skill_name_tarih">Tarih</string>
     <string name="skill_sentence_example_tarih">Bugün günlerden ne\?</string>
     <string name="perm_location">son bilinen konumu okuyun</string>
