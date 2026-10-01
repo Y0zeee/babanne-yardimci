@@ -19,12 +19,14 @@ private val DIYARBAKIR = Sehir("Diyarbakir", 37.91, 40.24)
 /**
  * Diyanet-published times (HH:MM: imsak, gunes, ogle, ikindi, aksam, yatsi) per city for [TARIH].
  *
- * TODO(verify): fill these from https://namazvakitleri.diyanet.gov.tr/ (record the URL and the
- * date of lookup here). They could not be fetched while writing this test (no network), so they
- * are intentionally left empty rather than guessed; the Diyanet comparison below is disabled
- * until they are filled in.
+ * Source: https://namazvakitleri.diyanet.gov.tr/tr-TR/{9206 ankara, 9541 istanbul, 9402 diyarbakir}
+ * monthly tables, looked up on 2026-10-02 (Diyanet also lists the Hijri date: 21 Rebiulahir 1448).
  */
-private val DIYANET: Map<Sehir, List<String>> = emptyMap()
+private val DIYANET: Map<Sehir, List<String>> = mapOf(
+    ANKARA to listOf("05:16", "06:39", "12:43", "16:01", "18:38", "19:55"),
+    ISTANBUL to listOf("05:30", "06:54", "12:59", "16:15", "18:53", "20:12"),
+    DIYARBAKIR to listOf("04:48", "06:08", "12:14", "15:32", "18:09", "19:24"),
+)
 
 private fun LocalTime.dk() = hour * 60 + minute
 
