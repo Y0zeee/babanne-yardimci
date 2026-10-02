@@ -15,6 +15,8 @@ import org.dicio.skill.standard.StandardRecognizerSkill
 import org.stypox.dicio.R
 import org.stypox.dicio.sentences.Sentences
 import org.stypox.dicio.sentences.Sentences.Timer
+import org.stypox.dicio.skills.alarm.TurkceSaatCozucu
+import org.stypox.dicio.util.TurkceSayi
 import org.stypox.dicio.util.StringUtils
 import org.stypox.dicio.util.getString
 import java.time.Duration
@@ -29,10 +31,13 @@ class TimerSkill(
     override suspend fun generateOutput(ctx: SkillContext, inputData: Timer): SkillOutput {
         return when (inputData) {
             is Timer.Set -> {
-                if (inputData.duration == null) {
+                // without a parser formatter (Turkish) the duration comes as a string capture
+                val duration = inputData.duration?.toJavaDuration()
+                    ?: inputData.durationText?.let { TurkceSaatCozucu.sure(it) }
+                if (duration == null) {
                     TimerOutput.SetAskDuration { setTimer(ctx, it, inputData.name) }
                 } else {
-                    setTimer(ctx, inputData.duration.toJavaDuration(), inputData.name)
+                    setTimer(ctx, duration, inputData.name)
                 }
             }
             is Timer.Query -> {
@@ -66,9 +71,10 @@ class TimerSkill(
             onSecondsTickCallback = { seconds ->
                 if (seconds <= 5) {
                     ctx.speechOutputDevice.speak(
-                        ctx.parserFormatter!!
-                            .pronounceNumber(seconds.toDouble())
-                            .get()
+                        ctx.parserFormatter
+                            ?.pronounceNumber(seconds.toDouble())
+                            ?.get()
+                            ?: TurkceSayi.sayi(seconds.toInt())
                     )
                 }
             },
@@ -186,7 +192,7 @@ class TimerSkill(
             } else {
                 ctx.getString(
                     R.string.skill_timer_query_name, setTimer.name,
-                    getFormattedDuration(ctx.parserFormatter!!, setTimer.lastTickMillis, true)
+                    getFormattedDuration(ctx.parserFormatter, setTimer.lastTickMillis, true)
                 )
             }
         }

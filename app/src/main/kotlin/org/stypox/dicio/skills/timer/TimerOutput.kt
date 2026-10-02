@@ -18,6 +18,7 @@ import org.stypox.dicio.R
 import org.stypox.dicio.io.graphical.Headline
 import org.stypox.dicio.io.graphical.HeadlineSpeechSkillOutput
 import org.stypox.dicio.sentences.Sentences
+import org.stypox.dicio.skills.alarm.TurkceSaatCozucu
 import org.stypox.dicio.util.RecognizeYesNoSkill
 import org.stypox.dicio.util.getString
 import java.text.DecimalFormatSymbols
@@ -38,7 +39,7 @@ sealed interface TimerOutput : SkillOutput {
         override fun GraphicalOutput(ctx: SkillContext) {
             Headline(
                 text = getFormattedDuration(
-                    ctx.parserFormatter!!,
+                    ctx.parserFormatter,
                     lastTickMillis.longValue,
                     false,
                 ),
@@ -58,10 +59,11 @@ sealed interface TimerOutput : SkillOutput {
                     ctx: SkillContext,
                     input: String
                 ): Pair<Score, Duration?> {
-                    val duration = ctx.parserFormatter!!
-                        .extractDuration(input)
-                        .parseFirst()
+                    val duration = ctx.parserFormatter
+                        ?.extractDuration(input)
+                        ?.parseFirst()
                         ?.toJavaDuration()
+                        ?: TurkceSaatCozucu.sure(input).takeIf { ctx.parserFormatter == null }
 
                     return Pair(
                         if (duration == null) AlwaysWorstScore else AlwaysBestScore,
@@ -137,7 +139,7 @@ fun formatStringWithName(
     @StringRes stringWithoutName: Int,
     @StringRes stringWithName: Int
 ): String {
-    val duration = getFormattedDuration(ctx.parserFormatter!!, milliseconds, true)
+    val duration = getFormattedDuration(ctx.parserFormatter, milliseconds, true)
     return if (name == null) {
         ctx.getString(stringWithoutName, duration)
     } else {
@@ -159,14 +161,16 @@ fun formatStringWithName(
 }
 
 fun getFormattedDuration(
-    parserFormatter: ParserFormatter,
+    parserFormatter: ParserFormatter?,
     milliseconds: Long,
     speech: Boolean
 ): String {
     val niceDuration = parserFormatter
-        .niceDuration(org.dicio.numbers.unit.Duration(Duration.ofMillis(milliseconds.absoluteValue)))
-        .speech(speech)
-        .get()
+        ?.niceDuration(org.dicio.numbers.unit.Duration(Duration.ofMillis(milliseconds.absoluteValue)))
+        ?.speech(speech)
+        ?.get()
+        // no dicio-numbers formatter (e.g. Turkish): spell the duration ourselves
+        ?: TurkceSaatCozucu.sureMetni(Duration.ofMillis(milliseconds.absoluteValue))
 
     return if (speech) {
         niceDuration // no need to speak milliseconds

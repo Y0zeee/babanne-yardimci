@@ -38,6 +38,14 @@ skills:
     sentences:
       - id: iptal
 
+  - id: alarm
+    specificity: high
+    sentences:
+      - id: kur
+        captures:
+          - id: zaman
+            type: string
+
   - id: tarih
     specificity: high
     sentences:
@@ -158,6 +166,8 @@ skills:
         captures:
           - id: duration
             type: duration
+          - id: duration_text
+            type: string
           - id: name
             type: string
       - id: cancel

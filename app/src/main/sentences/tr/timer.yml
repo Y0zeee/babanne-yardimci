@@ -1,4 +1,5 @@
 set:
+  - .duration_text. sonra haber ver|söyle
   - zamanlayıcı|(bana? haber ver) .duration. içerisinde?
   - bir? (.name. adında|(adı ile)|adıyla|adındaki)? zamanlayıcı kur|başlat|oluştur (.duration.)|(.duration. kadar)?
 
