@@ -170,6 +170,8 @@
     <string name="skill_sentence_example_sms_oku">Read my messages</string>
     <string name="perm_read_call_log">read your call log</string>
     <string name="perm_read_sms">read your text messages</string>
+    <string name="skill_name_alarm">Alarm</string>
+    <string name="skill_sentence_example_alarm">Wake me up at seven</string>
     <string name="skill_name_tarih">Date</string>
     <string name="skill_sentence_example_tarih">What day is it today?</string>
     <string name="perm_location">read the last known location</string>

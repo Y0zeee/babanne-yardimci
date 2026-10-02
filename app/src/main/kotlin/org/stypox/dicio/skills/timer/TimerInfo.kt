@@ -27,7 +27,8 @@ object TimerInfo : SkillInfo("timer") {
     override fun build(ctx: SkillContext): Skill<*>? {
         val data = Sentences.Timer[ctx.sentencesLanguage] ?: return null
         val yesNoData = Sentences.UtilYesNo[ctx.sentencesLanguage] ?: return null
-        if (ctx.parserFormatter == null) return null
+        // Turkish has no dicio-numbers parser: durations are parsed by TurkceSaatCozucu instead
+        if (ctx.parserFormatter == null && ctx.sentencesLanguage != "tr") return null
         return TimerSkill(TimerInfo, data, yesNoData)
     }
 }

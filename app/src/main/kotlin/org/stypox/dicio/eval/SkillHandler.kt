@@ -31,6 +31,7 @@ import org.stypox.dicio.skills.cevapsiz.CevapsizInfo
 import org.stypox.dicio.skills.sms_oku.SmsOkuInfo
 import org.stypox.dicio.skills.open.OpenInfo
 import org.stypox.dicio.skills.search.SearchInfo
+import org.stypox.dicio.skills.alarm.AlarmInfo
 import org.stypox.dicio.skills.tarih.TarihInfo
 import org.stypox.dicio.skills.telephone.TelephoneInfo
 import org.stypox.dicio.skills.acil.AcilInfo
@@ -61,6 +62,7 @@ class SkillHandler @Inject constructor(
         TimerInfo,
         CurrentTimeInfo,
         TarihInfo,
+        AlarmInfo,
         NamazVaktiInfo,
         PilInfo,
         CevapsizInfo,

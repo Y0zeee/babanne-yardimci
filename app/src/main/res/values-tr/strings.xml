@@ -138,6 +138,8 @@
     <string name="skill_sentence_example_sms_oku">Mesajları oku</string>
     <string name="perm_read_call_log">arama geçmişinizi okuyun</string>
     <string name="perm_read_sms">kısa mesajlarınızı okuyun</string>
+    <string name="skill_name_alarm">Alarm</string>
+    <string name="skill_sentence_example_alarm">Sabah yedide uyandır</string>
     <string name="skill_name_tarih">Tarih</string>
     <string name="skill_sentence_example_tarih">Bugün günlerden ne\?</string>
     <string name="perm_location">son bilinen konumu okuyun</string>
